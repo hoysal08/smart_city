@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
 import Navbar from 'react-router-bootstrap';
 import Button from 'react-router-bootstrap';
 
 function Nav_bar(props) {
+  useEffect(() => {
+    // Update the document title using the browser API
+    props.connectwallet();
+  }, []);
+
   return (
     <div>
       <nav class="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
@@ -28,7 +33,7 @@ function Nav_bar(props) {
               </svg>
             </div>
             <LinkContainer to="/">
-              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+              <span class="self-center text-xl font-bold whitespace-nowrap dark:text-white">
                 Smart_City
               </span>
             </LinkContainer>
