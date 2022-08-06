@@ -7,6 +7,7 @@ import Registration_page from './Registration_page';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import { useState } from 'react';
+import Certificate from './Certificate';
 
 function App() {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -47,6 +48,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home_page />} />
           <Route path="/registration" element={<Registration_page />} />
+          <Route path="/certificate" element={<Certificate />} />
         </Routes>
       </Container>
     </BrowserRouter>

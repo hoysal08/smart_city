@@ -1,18 +1,25 @@
 import React,{useState} from 'react';
 import { ethers } from "ethers";
 import ABI from "./contracts/pollution.json"
+import { LinkContainer } from 'react-router-bootstrap';
 
-console.log(ABI);
-async function Home_page() {
-const cntadd= "0x4b5cabe7b657bbc3eb90d7a0e3886db81c503c1e"
+ function Home_page() {
+const cntadd= "0x0a0C48B0d7c7c7C3469cA5Ee5D82B6e9049d40ba"
   const [vehicalnum,setvehicleNumber]=useState()
-  function handleclick(e){
+  async function handleclick(e){
     e.preventDefault();   
     const provider=new ethers.providers.Web3Provider(window.ethereum);
     const signer=provider.getSigner();
      const cnt = new ethers.Contract(cntadd,ABI,signer);
      let txn= await cnt.getTokenId(vehicalnum);
-     console.log(txn);
+     const TokenId=txn.toNumber()
+     let URI=await cnt.getTokenURI(TokenId);
+     URI=URI.substring(29);
+     console.log(URI)
+     let obj=window.atob(URI)
+    console.log(JSON.parse(obj));
+    //  console.log(URI.name)
+    //  console.log(URI.image);
 
   }
   return (
@@ -41,7 +48,7 @@ const cntadd= "0x4b5cabe7b657bbc3eb90d7a0e3886db81c503c1e"
                 onChange={(e)=>{setvehicleNumber(e.target.value)}}
               />
             </div>
-
+            <LinkContainer to="/certificate">
             <button
               class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
               type="submit"
@@ -49,6 +56,7 @@ const cntadd= "0x4b5cabe7b657bbc3eb90d7a0e3886db81c503c1e"
             >
               Submit
             </button>
+            </LinkContainer>
           </form>
           
         </section>
