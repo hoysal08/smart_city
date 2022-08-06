@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 import { useState } from 'react';
 import Certificate from './Certificate';
 import ABI from "./contracts/pollution.json"
-import { ethers } from "ethers";
+import { ethers,utils } from "ethers";
 
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
       window.ethereum
         .request({ method: 'eth_requestAccounts' })
         .then((result) => {
+          result[0]=utils.getAddress(result[0])
           accountChangedHandler(result[0]);
           setConnButtonText('Wallet Connected');
         })
@@ -40,26 +41,36 @@ function App() {
     setDefaultAccount(newAccount);
   };
 
-  // useEffect( async ()=>{
-
-  //   const cntadd= "0x0a0C48B0d7c7c7C3469cA5Ee5D82B6e9049d40ba"
-  //   const provider=new ethers.providers.Web3Provider(window.ethereum);
-  //   const signer=provider.getSigner();
-  //    const cnt = new ethers.Contract(cntadd,ABI,signer);
-  //    let arr=await cnt.getAuthorisedAddr();
-  //    console.log(arr);
-
-  // })
-
-  useEffect(()=>{
+  useEffect( ()=>{
+         const func= async()=>{
+          console.log("there")
       const cntadd= "0x0a0C48B0d7c7c7C3469cA5Ee5D82B6e9049d40ba"
-      const provider=new ethers.providers.Web3Provider(window.ethereum);
-      const signer=provider.getSigner();
-      const cnt = new ethers.Contract(cntadd,ABI,signer);
+    const provider=new ethers.providers.Web3Provider(window.ethereum);
+    const signer=provider.getSigner();
+     const cnt = new ethers.Contract(cntadd,ABI,signer);
+     let arr=await cnt.getAuthorisedAddr();
+     setauthaddress(arr);
+         }
+         func();
+  },[defaultAccount])
 
+  useEffect( ()=>{
+    console.log(authaddress.includes(defaultAccount));
+    authaddress.forEach((add)=>{
+      if(add==defaultAccount)
+    {
+      setauthuser(true);
+      return
+    }
+    else
+    {
+      setauthuser(false);
+    }
+    })
+    
+  },[authuser,defaultAccount]);
 
-
-  })
+ 
 
   return (
     <BrowserRouter>

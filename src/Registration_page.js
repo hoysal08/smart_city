@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import ABI from "./contracts/pollution.json"
+import {ethers} from "ethers"
+
 
 function Registration_page() {
   const [ownerName, setownerName] = useState('');
@@ -10,10 +13,23 @@ function Registration_page() {
   const [hc, sethc] = useState('');
   const [co2, setco2] = useState('');
   const [o2, seto2] = useState('');
+  const cntadd= "0x0a0C48B0d7c7c7C3469cA5Ee5D82B6e9049d40ba"
 
+
+async function handleclick(e)
+    {
+      e.preventDefault();
+      console.log("here");
+      const provider=new ethers.providers.Web3Provider(window.ethereum);
+    const signer=provider.getSigner();
+    let rate=Math.floor(Math.random() * (5 - 1 + 1) + 1);
+     const cnt = new ethers.Contract(cntadd,ABI,signer);
+     let txn=await cnt.mint( vehicleNumber,typeOfVehicle,fuel,model,parseInt(rate),ownerName)
+     txn= await txn.wait()
+    }
   return (
     <div class="pl-20 w-screen h-screen py-20 bg-cyan-50">
-      <form>
+      <form onSubmit={handleclick}>
       <h4 class="font-medium leading-tight text-2xl mt-0 mb-2 text-black-600">Vehicle Details</h4>
         <div class="grid md:grid-cols-2 md:gap-6 pt-5">
           <div class="relative z-0 mb-6 w-full group">
@@ -199,8 +215,7 @@ function Registration_page() {
         </div>
         <button
           type="submit"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >
           Submit
         </button>
       </form>

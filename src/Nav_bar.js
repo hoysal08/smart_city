@@ -64,7 +64,7 @@ function Nav_bar(props) {
                 </LinkContainer>
               </li>
 
-              {props.authuser && <li>
+              { <li>
                 <LinkContainer to="/registration">
                   <a
                     href="#"
