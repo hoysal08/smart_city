@@ -15,9 +15,16 @@ const cntadd= "0x0a0C48B0d7c7c7C3469cA5Ee5D82B6e9049d40ba"
      const TokenId=txn.toNumber()
      let URI=await cnt.getTokenURI(TokenId);
      URI=URI.substring(29);
-     console.log(URI)
      let obj=window.atob(URI)
-    console.log(JSON.parse(obj));
+    obj=JSON.parse(obj);
+    let Image=obj.image;
+    console.log(Image);
+    
+    // console.log(obj.image);
+
+    // let img=obj.image.substring(26);
+    // img=window.atob(img)
+
     //  console.log(URI.name)
     //  console.log(URI.image);
 
