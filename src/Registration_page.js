@@ -14,7 +14,8 @@ function Registration_page() {
   return (
     <div class="pl-20 w-screen h-screen py-20 bg-cyan-50">
       <form>
-        <div class="grid md:grid-cols-2 md:gap-6 mt-24 pt-5">
+      <h4 class="font-medium leading-tight text-2xl mt-0 mb-2 text-black-600">Vehicle Details</h4>
+        <div class="grid md:grid-cols-2 md:gap-6 pt-5">
           <div class="relative z-0 mb-6 w-full group">
             <input
               type="text"
@@ -115,6 +116,7 @@ function Registration_page() {
             </label>
           </div>
         </div>
+        <h4 class="font-medium leading-tight text-2xl mt-0 mb-2 text-black-600 mt-5">Pollution Test Details</h4>
         <div class="grid md:grid-cols-2 md:gap-6">
           <div class="relative z-0 mb-6 w-full group">
             <input

@@ -12,6 +12,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [connButtonText, setConnButtonText] = useState('Connect Wallet');
+  const [authuser,setauthuser] = useState(false);
 
   const connectWalletHandler = () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
@@ -41,6 +42,7 @@ function App() {
           connectbutton={connButtonText}
           defaultaccount={defaultAccount}
           connectwallet={connectWalletHandler}
+          authuser={authuser}
         />
         <Routes>
           <Route path="/" element={<Home_page />} />
