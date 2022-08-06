@@ -2,10 +2,11 @@ import React,{useState} from 'react';
 import { ethers } from "ethers";
 import ABI from "./contracts/pollution.json"
 import { LinkContainer } from 'react-router-bootstrap';
-
  function Home_page() {
+  let Imag;
 const cntadd= "0x0a0C48B0d7c7c7C3469cA5Ee5D82B6e9049d40ba"
   const [vehicalnum,setvehicleNumber]=useState()
+  const[Imagg,setImagg]=useState(null)
   async function handleclick(e){
     e.preventDefault();   
     const provider=new ethers.providers.Web3Provider(window.ethereum);
@@ -17,9 +18,10 @@ const cntadd= "0x0a0C48B0d7c7c7C3469cA5Ee5D82B6e9049d40ba"
      URI=URI.substring(29);
      let obj=window.atob(URI)
     obj=JSON.parse(obj);
-    let Image=obj.image;
-    console.log(Image);
-    
+     Imag=obj.image;
+     setImagg(Imag);
+    console.log(Imag);
+
     // console.log(obj.image);
 
     // let img=obj.image.substring(26);
@@ -55,7 +57,7 @@ const cntadd= "0x0a0C48B0d7c7c7C3469cA5Ee5D82B6e9049d40ba"
                 onChange={(e)=>{setvehicleNumber(e.target.value)}}
               />
             </div>
-            <LinkContainer to="/certificate">
+            {/* <LinkContainer to="/certificate"> */}
             <button
               class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
               type="submit"
@@ -63,12 +65,17 @@ const cntadd= "0x0a0C48B0d7c7c7C3469cA5Ee5D82B6e9049d40ba"
             >
               Submit
             </button>
-            </LinkContainer>
+                      {/* </LinkContainer> */}
           </form>
           
         </section>
       </div>
-    </div>
+   {  Imagg &&  
+   <div class="w-screen h-max py-10 bg-gradient-to-r from-cyan-200 via-sky-300 to-blue-400 ">
+   <div class="bg-white w-7/12 mx-auto p-5 md:p-12 my-5 rounded-lg shadow-2xl">
+<img src={Imagg} class="object-cover w-screen"/>
+</div></div>}
+     </div>
   );
 }
 

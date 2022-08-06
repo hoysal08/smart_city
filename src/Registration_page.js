@@ -28,7 +28,7 @@ async function handleclick(e)
      txn= await txn.wait()
     }
   return (
-    <div class="pl-20 w-screen h-screen py-20 bg-cyan-50">
+    <div class="pl-20 w-screen h-screen py-20 bg-cyan-50 mt-10">
       <form onSubmit={handleclick}>
       <h4 class="font-medium leading-tight text-2xl mt-0 mb-2 text-black-600">Vehicle Details</h4>
         <div class="grid md:grid-cols-2 md:gap-6 pt-5">
@@ -56,7 +56,7 @@ async function handleclick(e)
               type="text"
               name="floating_last_name"
               id="floating_last_name"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer uppercase"
               placeholder=" "
               required=""
               onChange={(e) => {

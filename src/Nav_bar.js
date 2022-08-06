@@ -13,7 +13,7 @@ function Nav_bar(props) {
   return (
     <div>
       <nav class="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
-        <div class="container flex flex-wrap justify-between items-center mx-auto">
+        <div class="ml-8 container flex flex-wrap justify-between items-center mx-auto">
           <a href="https://flowbite.com/" class="flex items-center">
             <div class="flex space-x-4 mr-2">
               {' '}
@@ -38,7 +38,7 @@ function Nav_bar(props) {
               </span>
             </LinkContainer>
           </a>
-          <div class="flex md:order-2 flex-col">
+          <div class="flex md:order-2 flex-col mr-8">
             <button
               type="button"
               class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -50,13 +50,13 @@ function Nav_bar(props) {
               {props.defaultaccount}
             </p>
           </div>
-          <div class="hidden w-full md:block md:w-auto" id="navbar-sticky">
+          <div class="hidden w-full md:block md:w-auto ml-24" id="navbar-sticky">
             <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <LinkContainer to="/">
                   <a
                     href="#"
-                    class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                    class="text-xl block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
                     aria-current="page"
                   >
                     Home
