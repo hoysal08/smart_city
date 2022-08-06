@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import ABI from "./contracts/pollution.json"
 
 console.log(ABI);
-function Home_page() {
+async function Home_page() {
 const cntadd= "0x4b5cabe7b657bbc3eb90d7a0e3886db81c503c1e"
   const [vehicalnum,setvehicleNumber]=useState()
   function handleclick(e){
@@ -11,7 +11,7 @@ const cntadd= "0x4b5cabe7b657bbc3eb90d7a0e3886db81c503c1e"
     const provider=new ethers.providers.Web3Provider(window.ethereum);
     const signer=provider.getSigner();
      const cnt = new ethers.Contract(cntadd,ABI,signer);
-     let txn= cnt.getTokenId(vehicalnum);
+     let txn= await cnt.getTokenId(vehicalnum);
      console.log(txn);
 
   }
